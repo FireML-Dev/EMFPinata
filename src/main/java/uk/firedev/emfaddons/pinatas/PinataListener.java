@@ -19,6 +19,8 @@ public class PinataListener implements Listener {
             return;
         }
         if (PinataManager.getInstance().isPinata(entity)) {
+            event.setDroppedExp(0);
+            event.getDrops().clear();
             List<String> rewards = PinataManager.getInstance().getRewards(entity);
             rewards.forEach(reward -> new Reward(reward).rewardPlayer(player, null));
         }
