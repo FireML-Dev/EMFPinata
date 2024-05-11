@@ -2,7 +2,7 @@
 
 Addons for the EvenMoreFish Plugin.
 
-Requires a Paper server to work!
+Requires a Paper Server and Java 17 to work!
 
 ## Download
 
