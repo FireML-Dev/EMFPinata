@@ -1,0 +1,12 @@
+name: EMFAddons
+version: '${project.version}'
+main: uk.firedev.emfaddons.EMFAddons
+api-version: '1.20'
+author: FireML
+description: ${project.description}
+folia-supported: true
+dependencies:
+  server:
+    EvenMoreFish:
+      required: true
+      load: BEFORE
