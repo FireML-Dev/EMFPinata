@@ -1,0 +1,11 @@
+pinatas:
+  example:
+    entity-type: llama
+    display-name: "<aqua><bold>Example Piñata"
+    health: 120
+    glowing: true
+    glow-color: AQUA
+    silent: true
+    # Uses EvenMoreFish's RewardTypes (Like in the catch-event for example)
+    rewards:
+      - "ITEM:STONE,10"
