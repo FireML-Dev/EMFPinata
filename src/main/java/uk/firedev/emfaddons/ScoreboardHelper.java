@@ -32,18 +32,19 @@ public class ScoreboardHelper {
             EMFAddons.getInstance().getLogger().warning("Invalid piñata glow color: " + color + ". Not setting it.");
             return;
         }
+        String teamName = "EMFAddons_" + color;
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         String uuidString = entity.getUniqueId().toString();
         if (loadedTeams.containsKey(namedTextColor)) {
             loadedTeams.get(namedTextColor).addEntry(entity.getUniqueId().toString());
         } else {
-            Team existingTeam = manager.getMainScoreboard().getTeam(color);
+            Team existingTeam = manager.getMainScoreboard().getTeam(teamName);
             if (existingTeam != null) {
                 existingTeam.addEntry(uuidString);
                 loadedTeams.put(namedTextColor, existingTeam);
                 return;
             }
-            Team team = manager.getMainScoreboard().registerNewTeam(color);
+            Team team = manager.getMainScoreboard().registerNewTeam(teamName);
             team.color(namedTextColor);
             team.addEntry(uuidString);
             loadedTeams.put(namedTextColor, team);
