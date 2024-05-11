@@ -6,7 +6,8 @@ Requires a Paper Server and Java 17 to work!
 
 ## Download
 
-The plugin can be downloaded here: https://ci.firedev.uk/job/EMFAddons/
+Release builds can be downloaded here: https://github.com/FireML-Dev/EMFAddons/releases/latest
+Snapshot/Dev builds can be downloaded here: https://ci.firedev.uk/job/EMFAddons/
 
 ## Wiki Pages
 
