@@ -1,6 +1,8 @@
 # EMFAddons
 
-Addons for the EvenMoreFish Plugin
+Addons for the EvenMoreFish Plugin.
+
+Requires a Paper server to work!
 
 ## Download
 
