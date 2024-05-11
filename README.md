@@ -6,6 +6,10 @@ Addons for the EvenMoreFish Plugin
 
 The plugin can be downloaded here: https://ci.firedev.uk/job/EMFAddons/
 
+## Wiki Pages
+
+Piñata Config: https://github.com/FireML-Dev/EMFAddons/wiki/Pi%C3%B1ata-Config
+
 ## Maven
 
 ```xml
