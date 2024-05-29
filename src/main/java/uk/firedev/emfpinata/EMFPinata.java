@@ -22,7 +22,6 @@ public final class EMFPinata extends JavaPlugin {
         CommandAPI.onEnable();
         reload();
         registerCommands();
-        System.out.println(NamedTextColor.NAMES.values());
     }
 
     public static EMFPinata getInstance() { return instance; }
