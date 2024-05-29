@@ -34,21 +34,16 @@ public class ScoreboardHelper {
         }
         String teamName = "EMFPinata_" + color;
         ScoreboardManager manager = Bukkit.getScoreboardManager();
-        String uuidString = entity.getUniqueId().toString();
-        if (loadedTeams.containsKey(namedTextColor)) {
-            loadedTeams.get(namedTextColor).addEntry(entity.getUniqueId().toString());
-        } else {
+        Team team = loadedTeams.computeIfAbsent(namedTextColor, key -> {
             Team existingTeam = manager.getMainScoreboard().getTeam(teamName);
             if (existingTeam != null) {
-                existingTeam.addEntry(uuidString);
-                loadedTeams.put(namedTextColor, existingTeam);
-                return;
+                return existingTeam;
             }
-            Team team = manager.getMainScoreboard().registerNewTeam(teamName);
-            team.color(namedTextColor);
-            team.addEntry(uuidString);
-            loadedTeams.put(namedTextColor, team);
-        }
+            Team newTeam = manager.getMainScoreboard().registerNewTeam(teamName);
+            newTeam.color(namedTextColor);
+            return newTeam;
+        });
+        team.addEntry(entity.getUniqueId().toString());
     }
 
 }
