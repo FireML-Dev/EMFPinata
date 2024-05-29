@@ -1,4 +1,4 @@
-package uk.firedev.emfaddons.pinatas;
+package uk.firedev.emfpinata.pinatas;
 
 import com.oheers.fish.api.reward.Reward;
 import org.bukkit.entity.Entity;

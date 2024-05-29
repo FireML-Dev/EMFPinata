@@ -1,17 +1,17 @@
-package uk.firedev.emfaddons;
+package uk.firedev.emfpinata;
 
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.CommandPermission;
-import uk.firedev.emfaddons.config.MessageConfig;
-import uk.firedev.emfaddons.pinatas.PinataCommand;
+import uk.firedev.emfpinata.config.MessageConfig;
+import uk.firedev.emfpinata.pinatas.PinataCommand;
 
 public class MainCommand extends CommandAPICommand {
 
     private static MainCommand instance;
 
     private MainCommand() {
-        super("emfaddons");
-        setPermission(CommandPermission.fromString("emfaddons.command"));
+        super("emfpinata");
+        setPermission(CommandPermission.fromString("emfpinata.command"));
         withShortDescription("Manage the plugin");
         withFullDescription("Manage the plugin");
         withSubcommands(
@@ -30,7 +30,7 @@ public class MainCommand extends CommandAPICommand {
     private CommandAPICommand getReloadCommand() {
         return new CommandAPICommand("reload")
                 .executes((sender, arguments) -> {
-                    EMFAddons.getInstance().reload();
+                    EMFPinata.getInstance().reload();
                     sender.sendMessage(MessageConfig.getInstance().getReloadedMessage());
                 });
     }

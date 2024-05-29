@@ -1,6 +1,6 @@
-name: EMFAddons
+name: EMFPinata
 version: '${project.version}'
-main: uk.firedev.emfaddons.EMFAddons
+main: uk.firedev.emfpinata.EMFPinata
 api-version: '1.20'
 author: FireML
 description: ${project.description}

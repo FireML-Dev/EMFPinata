@@ -1,5 +1,5 @@
 messages:
-  prefix: "<gray>[EMFAddons] </gray>"
+  prefix: "<gray>[EMFPiñata] </gray>"
   main-command:
     reloaded: "{prefix}<aqua>Successfully reloaded the plugin."
   pinata-command:

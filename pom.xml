@@ -5,11 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>uk.firedev</groupId>
-  <artifactId>EMFAddons</artifactId>
+  <artifactId>EMFPinata</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>EMFAddons</name>
+  <name>EMFPiñata</name>
+  <description>A Piñata addon for the EvenMoreFish plugin.</description>
 
   <properties>
     <java.version>17</java.version>
@@ -35,7 +36,7 @@
             <relocations>
                 <relocation>
                     <pattern>dev.jorel.commandapi</pattern>
-                    <shadedPattern>uk.firedev.emfaddons.libs.commandapi</shadedPattern>
+                    <shadedPattern>uk.firedev.emfpinata.libs.commandapi</shadedPattern>
                 </relocation>
             </relocations>
         </configuration>

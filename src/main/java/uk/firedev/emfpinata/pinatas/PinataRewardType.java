@@ -1,11 +1,11 @@
-package uk.firedev.emfaddons.pinatas;
+package uk.firedev.emfpinata.pinatas;
 
 import com.oheers.fish.api.reward.RewardType;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.emfaddons.EMFAddons;
+import uk.firedev.emfpinata.EMFPinata;
 
 public class PinataRewardType implements RewardType {
 
@@ -31,7 +31,7 @@ public class PinataRewardType implements RewardType {
         }
         PinataType type = PinataManager.getInstance().getPinataFromIdentifier(value);
         if (type == null) {
-            EMFAddons.getInstance().getLogger().warning("Invalid Pinata specified for RewardType " + getIdentifier() + ": " + value);
+            EMFPinata.getInstance().getLogger().warning("Invalid Pinata specified for RewardType " + getIdentifier() + ": " + value);
             return;
         }
         type.spawn(hookLocation);
@@ -49,7 +49,7 @@ public class PinataRewardType implements RewardType {
 
     @Override
     public @NotNull JavaPlugin getPlugin() {
-        return EMFAddons.getInstance();
+        return EMFPinata.getInstance();
     }
 
 }

@@ -1,14 +1,14 @@
-package uk.firedev.emfaddons;
+package uk.firedev.emfpinata;
 
 import dev.jorel.commandapi.*;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import uk.firedev.emfaddons.config.MessageConfig;
-import uk.firedev.emfaddons.pinatas.PinataManager;
+import uk.firedev.emfpinata.config.MessageConfig;
+import uk.firedev.emfpinata.pinatas.PinataManager;
 
-public final class EMFAddons extends JavaPlugin {
+public final class EMFPinata extends JavaPlugin {
 
-    private static EMFAddons instance;
+    private static EMFPinata instance;
 
     @Override
     public void onLoad() {
@@ -25,7 +25,7 @@ public final class EMFAddons extends JavaPlugin {
         System.out.println(NamedTextColor.NAMES.values());
     }
 
-    public static EMFAddons getInstance() { return instance; }
+    public static EMFPinata getInstance() { return instance; }
 
     public void reload() {
         MessageConfig.getInstance().reload();

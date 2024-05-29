@@ -1,4 +1,4 @@
-package uk.firedev.emfaddons.pinatas;
+package uk.firedev.emfpinata.pinatas;
 
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;

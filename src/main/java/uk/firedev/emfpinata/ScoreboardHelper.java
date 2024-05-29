@@ -1,4 +1,4 @@
-package uk.firedev.emfaddons;
+package uk.firedev.emfpinata;
 
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
@@ -29,10 +29,10 @@ public class ScoreboardHelper {
         color = color.toLowerCase();
         NamedTextColor namedTextColor = NamedTextColor.NAMES.value(color);
         if (namedTextColor == null) {
-            EMFAddons.getInstance().getLogger().warning("Invalid piñata glow color: " + color + ". Not setting it.");
+            EMFPinata.getInstance().getLogger().warning("Invalid piñata glow color: " + color + ". Not setting it.");
             return;
         }
-        String teamName = "EMFAddons_" + color;
+        String teamName = "EMFPinata_" + color;
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         String uuidString = entity.getUniqueId().toString();
         if (loadedTeams.containsKey(namedTextColor)) {

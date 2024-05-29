@@ -3,7 +3,7 @@
  * It will remain here until the next release, when I should just be able to use the one inside EMF itself.
  */
 
-package uk.firedev.emfaddons.config;
+package uk.firedev.emfpinata.config;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;

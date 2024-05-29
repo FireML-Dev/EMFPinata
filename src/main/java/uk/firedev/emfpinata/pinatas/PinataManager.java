@@ -1,15 +1,14 @@
-package uk.firedev.emfaddons.pinatas;
+package uk.firedev.emfpinata.pinatas;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
 import org.bukkit.persistence.PersistentDataType;
-import org.checkerframework.checker.units.qual.N;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import uk.firedev.emfaddons.EMFAddons;
-import uk.firedev.emfaddons.config.PinataConfig;
+import uk.firedev.emfpinata.EMFPinata;
+import uk.firedev.emfpinata.config.PinataConfig;
 
 import java.util.*;
 
@@ -34,7 +33,7 @@ public class PinataManager {
 
     private void load() {
         PinataCommand.getInstance().register();
-        Bukkit.getPluginManager().registerEvents(new PinataListener(), EMFAddons.getInstance());
+        Bukkit.getPluginManager().registerEvents(new PinataListener(), EMFPinata.getInstance());
         loaded = true;
     }
 
@@ -73,7 +72,7 @@ public class PinataManager {
      */
     public boolean registerPinata(@NotNull PinataType pinataType) {
         if (getPinataFromIdentifier(pinataType.getIdentifier()) != null) {
-            EMFAddons.getInstance().getLogger().warning("Tried to register a Piñata that is already registered!");
+            EMFPinata.getInstance().getLogger().warning("Tried to register a Piñata that is already registered!");
             return false;
         }
         getEditablePinataList().add(pinataType);
@@ -100,7 +99,7 @@ public class PinataManager {
      */
     public void spawnRandomPinata(@NotNull Location location) {
         if (getEditablePinataList().isEmpty()) {
-            EMFAddons.getInstance().getLogger().warning("There are no loaded Piñatas. Cannot spawn something that does not exist!");
+            EMFPinata.getInstance().getLogger().warning("There are no loaded Piñatas. Cannot spawn something that does not exist!");
             return;
         }
         int randomIndex = random.nextInt(getEditablePinataList().size());
@@ -115,12 +114,12 @@ public class PinataManager {
      */
     public void spawnPinata(@NotNull String identifier, @NotNull Location location) {
         if (getEditablePinataList().isEmpty()) {
-            EMFAddons.getInstance().getLogger().warning("There are no loaded Piñatas. Cannot spawn something that does not exist!");
+            EMFPinata.getInstance().getLogger().warning("There are no loaded Piñatas. Cannot spawn something that does not exist!");
             return;
         }
         PinataType pinataType = getPinataFromIdentifier(identifier);
         if (pinataType == null) {
-            EMFAddons.getInstance().getLogger().warning(identifier + " is not a valid PiñataType!");
+            EMFPinata.getInstance().getLogger().warning(identifier + " is not a valid PiñataType!");
             return;
         }
         pinataType.spawn(location);
@@ -153,11 +152,11 @@ public class PinataManager {
     }
 
     public NamespacedKey getPinataRewardsKey() {
-        return new NamespacedKey(EMFAddons.getInstance(), "pinata-rewards");
+        return new NamespacedKey(EMFPinata.getInstance(), "pinata-rewards");
     }
 
     public NamespacedKey getPinataKey() {
-        return new NamespacedKey(EMFAddons.getInstance(), "pinata");
+        return new NamespacedKey(EMFPinata.getInstance(), "pinata");
     }
 
     public boolean isPinata(@NotNull Entity entity) {

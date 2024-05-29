@@ -1,11 +1,11 @@
-package uk.firedev.emfaddons.pinatas;
+package uk.firedev.emfpinata.pinatas;
 
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.CommandPermission;
 import dev.jorel.commandapi.arguments.Argument;
 import dev.jorel.commandapi.arguments.ArgumentSuggestions;
 import dev.jorel.commandapi.arguments.StringArgument;
-import uk.firedev.emfaddons.config.MessageConfig;
+import uk.firedev.emfpinata.config.MessageConfig;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -15,7 +15,7 @@ public class PinataCommand extends CommandAPICommand {
 
     private PinataCommand() {
         super("pinata");
-        setPermission(CommandPermission.fromString("emfaddons.command.pinata"));
+        setPermission(CommandPermission.fromString("emfpinata.command.pinata"));
         withShortDescription("Spawn Piñatas!");
         withFullDescription("Spawn Piñatas!");
         withArguments(getPinataArgument());

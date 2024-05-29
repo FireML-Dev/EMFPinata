@@ -1,8 +1,7 @@
-package uk.firedev.emfaddons.pinatas;
+package uk.firedev.emfpinata.pinatas;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -11,8 +10,8 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.emfaddons.EMFAddons;
-import uk.firedev.emfaddons.ScoreboardHelper;
+import uk.firedev.emfpinata.EMFPinata;
+import uk.firedev.emfpinata.ScoreboardHelper;
 
 import java.util.List;
 
@@ -45,7 +44,7 @@ public interface PinataType {
     default void spawn(@NotNull Location location) {
         World world = location.getWorld();
         if (world == null) {
-            EMFAddons.getInstance().getLogger().warning("Invalid world!");
+            EMFPinata.getInstance().getLogger().warning("Invalid world!");
             return;
         }
         LivingEntity entity = (LivingEntity) location.getWorld().spawnEntity(location, getEntityType());

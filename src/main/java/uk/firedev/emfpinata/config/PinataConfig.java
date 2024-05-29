@@ -1,18 +1,18 @@
-package uk.firedev.emfaddons.config;
+package uk.firedev.emfpinata.config;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.emfaddons.EMFAddons;
-import uk.firedev.emfaddons.pinatas.Pinata;
-import uk.firedev.emfaddons.pinatas.PinataManager;
+import uk.firedev.emfpinata.EMFPinata;
+import uk.firedev.emfpinata.pinatas.Pinata;
+import uk.firedev.emfpinata.pinatas.PinataManager;
 
 public class PinataConfig extends ConfigBase {
 
     private static PinataConfig instance;
 
     private PinataConfig() {
-        super("piñatas.yml", EMFAddons.getInstance());
+        super("piñatas.yml", EMFPinata.getInstance());
     }
 
     public static PinataConfig getInstance() {

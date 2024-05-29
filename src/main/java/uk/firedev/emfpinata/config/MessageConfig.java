@@ -1,10 +1,10 @@
-package uk.firedev.emfaddons.config;
+package uk.firedev.emfpinata.config;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.emfaddons.EMFAddons;
+import uk.firedev.emfpinata.EMFPinata;
 
 public class MessageConfig extends ConfigBase {
 
@@ -13,7 +13,7 @@ public class MessageConfig extends ConfigBase {
     private final MiniMessage miniMessage;
 
     public MessageConfig() {
-        super("messages.yml", EMFAddons.getInstance());
+        super("messages.yml", EMFPinata.getInstance());
         updateConfig();
         miniMessage = MiniMessage.miniMessage();
     }
@@ -33,7 +33,7 @@ public class MessageConfig extends ConfigBase {
     // GENERAL
 
     public Component getPrefix() {
-        @NotNull String prefixString = getConfig().getString("messages.prefix", "<gray>[EMFAddons] </gray>");
+        @NotNull String prefixString = getConfig().getString("messages.prefix", "<gray>[EMFPinata] </gray>");
         return miniMessage.deserialize(prefixString);
     }
 
