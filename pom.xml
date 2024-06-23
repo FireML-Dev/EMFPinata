@@ -6,7 +6,7 @@
 
   <groupId>uk.firedev</groupId>
   <artifactId>EMFPinata</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>EMFPiñata</name>
@@ -46,6 +46,9 @@
             <goals>
               <goal>shade</goal>
             </goals>
+            <configuration>
+                <createDependencyReducedPom>false</createDependencyReducedPom>
+            </configuration>
           </execution>
         </executions>
       </plugin>

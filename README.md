@@ -27,7 +27,7 @@ Piñata Config: https://github.com/FireML-Dev/EMFPinata/wiki/Pi%C3%B1ata-Config
     <dependency>
         <groupId>uk.firedev</groupId>
         <artifactId>EMFPinata</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
