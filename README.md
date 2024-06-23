@@ -2,7 +2,7 @@
 
 A Piñata addon for the EvenMoreFish plugin.
 
-Requires a Paper 1.20.6 Server and Java 21 to work!
+Requires a Paper 1.21 Server and Java 21 to work!
 
 ## Download
 
