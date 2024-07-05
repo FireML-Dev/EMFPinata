@@ -1,5 +1,6 @@
 package uk.firedev.emfpinata.config;
 
+import com.oheers.fish.config.ConfigBase;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
 import net.kyori.adventure.text.minimessage.MiniMessage;

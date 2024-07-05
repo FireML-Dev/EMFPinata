@@ -93,9 +93,9 @@
       <dependency>
           <groupId>com.oheers</groupId>
           <artifactId>EvenMoreFish</artifactId>
-          <version>1.7</version>
+          <version>1.7.2</version>
           <scope>system</scope>
-          <systemPath>${basedir}/libs/even-more-fish-1.7.jar</systemPath>
+          <systemPath>${basedir}/libs/even-more-fish-1.7.2.jar</systemPath>
       </dependency>
       <dependency>
           <groupId>dev.jorel</groupId>
