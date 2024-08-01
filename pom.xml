@@ -6,7 +6,7 @@
 
   <groupId>uk.firedev</groupId>
   <artifactId>EMFPinata</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>EMFPiñata</name>
@@ -46,6 +46,9 @@
             <goals>
               <goal>shade</goal>
             </goals>
+            <configuration>
+                <createDependencyReducedPom>false</createDependencyReducedPom>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -84,20 +87,20 @@
       <dependency>
           <groupId>io.papermc.paper</groupId>
           <artifactId>paper-api</artifactId>
-          <version>1.20.6-R0.1-SNAPSHOT</version>
+          <version>1.21-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
       <dependency>
           <groupId>com.oheers</groupId>
           <artifactId>EvenMoreFish</artifactId>
-          <version>1.7</version>
+          <version>1.7.2</version>
           <scope>system</scope>
-          <systemPath>${basedir}/libs/even-more-fish-1.7.jar</systemPath>
+          <systemPath>${basedir}/libs/even-more-fish-1.7.2.jar</systemPath>
       </dependency>
       <dependency>
           <groupId>dev.jorel</groupId>
           <artifactId>commandapi-bukkit-shade-mojang-mapped</artifactId>
-          <version>9.4.2</version>
+          <version>9.5.1</version>
           <scope>compile</scope>
       </dependency>
   </dependencies>

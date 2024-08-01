@@ -12,7 +12,9 @@ public final class EMFPinata extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        CommandAPIBukkitConfig conf = new CommandAPIBukkitConfig(this).shouldHookPaperReload(true);
+        CommandAPIBukkitConfig conf = new CommandAPIBukkitConfig(this)
+                .shouldHookPaperReload(true)
+                .usePluginNamespace();
         CommandAPI.onLoad(conf);
     }
 

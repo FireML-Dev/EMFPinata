@@ -1,5 +1,6 @@
 package uk.firedev.emfpinata.config;
 
+import com.oheers.fish.config.ConfigBase;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
