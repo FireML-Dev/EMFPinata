@@ -20,6 +20,7 @@ dependencies {
     compileOnly(files("$projectDir/libs/even-more-fish-1.7.3.jar"))
 
     implementation(libs.commandapi)
+    implementation(libs.bstats)
 
     library(libs.boostedyaml)
 }
@@ -87,6 +88,7 @@ tasks {
         archiveClassifier.set("")
 
         relocate("dev.jorel.commandapi", "uk.firedev.emfpinata.libs.commandapi")
+        relocate("org.bstats", "uk.firedev.emfpinata.libs.bstats")
 
         minimize()
     }
