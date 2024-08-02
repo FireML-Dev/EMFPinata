@@ -14,8 +14,7 @@ public class MessageConfig extends ConfigBase {
     private final MiniMessage miniMessage;
 
     public MessageConfig() {
-        super("messages.yml", EMFPinata.getInstance());
-        updateConfig();
+        super("messages.yml", "messages.yml", EMFPinata.getInstance(), true);
         miniMessage = MiniMessage.miniMessage();
     }
 

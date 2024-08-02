@@ -1,19 +1,19 @@
 package uk.firedev.emfpinata.config;
 
-import com.oheers.fish.config.ConfigBase;
-import org.bukkit.configuration.ConfigurationSection;
+import dev.dejvokep.boostedyaml.block.implementation.Section;
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
 import uk.firedev.emfpinata.pinatas.Pinata;
 import uk.firedev.emfpinata.pinatas.PinataManager;
+import com.oheers.fish.config.ConfigBase;
 
 public class PinataConfig extends ConfigBase {
 
     private static PinataConfig instance;
 
     private PinataConfig() {
-        super("piñatas.yml", EMFPinata.getInstance());
+        super("piñatas.yml", "piñatas.yml", EMFPinata.getInstance(), false);
     }
 
     public static PinataConfig getInstance() {
@@ -24,12 +24,12 @@ public class PinataConfig extends ConfigBase {
     }
 
     public void loadAllPinatas() {
-        ConfigurationSection section = getConfig().getConfigurationSection("pinatas");
+        Section section = getConfig().getSection("pinatas");
         if (section == null) {
             return;
         }
-        section.getKeys(false).forEach(key -> {
-            ConfigurationSection pinataSection = section.getConfigurationSection(key);
+        section.getRoutesAsStrings(false).forEach(key -> {
+            Section pinataSection = section.getSection(key);
             if (pinataSection == null) {
                 return;
             }

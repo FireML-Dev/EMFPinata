@@ -16,8 +16,8 @@ public class PinataManager {
 
     private static PinataManager instance;
 
-    private List<@NotNull PinataType> pinatas = new ArrayList<>();
-    private Map<@NotNull String, @NotNull PinataType> pinatasMap = new HashMap<>();
+    private List<PinataType> pinatas = new ArrayList<>();
+    private Map<String, PinataType> pinatasMap = new HashMap<>();
     private int pinatasSize = -1;
     private final Random random = new Random();
     private boolean loaded = false;

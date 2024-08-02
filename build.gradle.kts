@@ -17,13 +17,15 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper.api)
-    compileOnly(files("$projectDir/libs/even-more-fish-1.7.2.jar"))
+    compileOnly(files("$projectDir/libs/even-more-fish-1.7.3.jar"))
 
     implementation(libs.commandapi)
+
+    library(libs.boostedyaml)
 }
 
 group = "uk.firedev"
-version = "1.0.2"
+version = "1.0.3-SNAPSHOT"
 description = "A Piñata addon for the EvenMoreFish plugin."
 java.sourceCompatibility = JavaVersion.VERSION_21
 
@@ -48,7 +50,16 @@ publishing {
     repositories {
         maven {
             name = "firedevRepo"
-            url = uri("https://repo.firedev.uk/repository/maven-releases/")
+
+            // Repository settings
+            var repoUrlString = "https://repo.firedev.uk/repository/maven-"
+            repoUrlString += if (project.version.toString().endsWith("-SNAPSHOT")) {
+                "snapshots/"
+            } else {
+                "releases/"
+            }
+            url = uri(repoUrlString)
+
             credentials(PasswordCredentials::class)
             authentication {
                 create<BasicAuthentication>("basic")
