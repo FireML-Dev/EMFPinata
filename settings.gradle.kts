@@ -10,7 +10,7 @@ dependencyResolutionManagement {
 
             library("boostedyaml", "dev.dejvokep:boosted-yaml:1.3.6")
 
-            plugin("shadow", "io.github.goooler.shadow").version("8.1.8")
+            plugin("shadow", "com.gradleup.shadow").version("8.3.0")
             plugin("plugin-yml", "net.minecrell.plugin-yml.paper").version("0.6.0")
         }
     }
