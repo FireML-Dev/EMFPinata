@@ -12,7 +12,9 @@ repositories {
     mavenCentral()
     gradlePluginPortal()
     maven("https://repo.papermc.io/repository/maven-public/")
-    maven("https://repo.firedev.uk/repository/maven-public/")
+    maven("https://repo.firedev.uk/repository/maven-public/") {
+        metadataSources { artifact() }
+    }
 }
 
 dependencies {
