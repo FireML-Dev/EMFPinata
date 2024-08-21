@@ -1,7 +1,7 @@
 package uk.firedev.emfpinata.config;
 
 import dev.dejvokep.boostedyaml.block.implementation.Section;
-import org.bukkit.entity.EntityType;
+import org.bukkit.entity.*;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
 import uk.firedev.emfpinata.pinatas.Pinata;
@@ -45,6 +45,7 @@ public class PinataConfig extends ConfigBase {
             pinata.setSilent(pinataSection.getBoolean("silent", true));
             pinata.setGlowColor(pinataSection.getString("glow-color", "aqua").toUpperCase());
             pinata.setRewards(pinataSection.getStringList("rewards"));
+            pinata.setAware(pinataSection.getBoolean("has-awareness"));
             pinata.register();
         });
     }

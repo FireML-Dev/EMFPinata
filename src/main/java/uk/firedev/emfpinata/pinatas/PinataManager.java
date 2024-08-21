@@ -72,7 +72,7 @@ public class PinataManager {
      */
     public boolean registerPinata(@NotNull PinataType pinataType) {
         if (getPinataFromIdentifier(pinataType.getIdentifier()) != null) {
-            EMFPinata.getInstance().getLogger().warning("Tried to register a Piñata that is already registered!");
+            EMFPinata.getInstance().getLogger().warning("Tried to register a Piñata that is already registered! (" + pinataType.getIdentifier() + ")");
             return false;
         }
         getEditablePinataList().add(pinataType);

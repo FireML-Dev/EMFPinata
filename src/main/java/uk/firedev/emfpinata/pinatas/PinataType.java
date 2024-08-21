@@ -5,8 +5,10 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Mob;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +28,8 @@ public interface PinataType {
     int getHealth();
 
     boolean isGlowing();
+
+    boolean isAware();
 
     /**
      * Hooks into EvenMoreFish's reward system to manage piñata rewards.
@@ -62,6 +66,9 @@ public interface PinataType {
             entity.setHealth(getHealth());
         }
         entity.setSilent(isSilent());
+        if (entity instanceof Mob mob) {
+            mob.setAware(isAware());
+        }
         PersistentDataContainer pdc = entity.getPersistentDataContainer();
         pdc.set(PinataManager.getInstance().getPinataKey(), PersistentDataType.BOOLEAN, true);
         pdc.set(PinataManager.getInstance().getPinataRewardsKey(), PersistentDataType.LIST.strings(), getRewards());

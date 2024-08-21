@@ -18,6 +18,7 @@ public class Pinata implements PinataType {
     private boolean silent = true;
     private String glowColor = "";
     private final EntityType entityType;
+    private boolean hasAwareness;
 
     public Pinata(@NotNull String identifier, @NotNull EntityType entityType, @Nullable String displayName) {
         this.identifier = identifier;
@@ -54,6 +55,15 @@ public class Pinata implements PinataType {
             health = 1;
         }
         this.health = health;
+    }
+
+    @Override
+    public boolean isAware() {
+        return hasAwareness;
+    }
+
+    public void setAware(boolean hasAwareness) {
+        this.hasAwareness = hasAwareness;
     }
 
     @Override
