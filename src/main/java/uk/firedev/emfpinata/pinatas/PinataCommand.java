@@ -20,12 +20,8 @@ public class PinataCommand extends CommandAPICommand {
         withFullDescription("Spawn Piñatas!");
         withArguments(getPinataArgument());
         executesPlayer((player, arguments) -> {
-            String[] args = arguments.rawArgs();
-            if (args.length < 1) {
-                player.sendMessage(MessageConfig.getInstance().getPinataNotValidMessage());
-                return;
-            }
-            PinataType pinataType = PinataManager.getInstance().getPinataFromIdentifier(args[0]);
+            // Can safely ignore the null warning, as the argument is not optional
+            PinataType pinataType = PinataManager.getInstance().getPinataFromIdentifier((String) arguments.get("pinata"));
             if (pinataType == null) {
                 player.sendMessage(MessageConfig.getInstance().getPinataNotValidMessage());
                 return;
@@ -42,7 +38,7 @@ public class PinataCommand extends CommandAPICommand {
         return instance;
     }
 
-    private Argument<?> getPinataArgument() {
+    private Argument<String> getPinataArgument() {
         return new StringArgument("pinata").includeSuggestions(ArgumentSuggestions.stringsAsync(info ->
                 CompletableFuture.supplyAsync(() ->
                         PinataManager.getInstance().getPinataList().stream().map(PinataType::getIdentifier).toArray(String[]::new)
