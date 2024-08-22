@@ -6,7 +6,7 @@ import uk.firedev.emfpinata.EMFPinata;
 public class ExampleConfig extends ConfigBase {
 
     public ExampleConfig() {
-        super("examples.yml", "examples.yml", EMFPinata.getInstance(), true);
+        super("examples.yml", "examples.yml", EMFPinata.getInstance(), false);
         defaultFile();
     }
 
