@@ -23,8 +23,6 @@ dependencies {
 
     implementation(libs.commandapi)
     implementation(libs.bstats)
-
-    library(libs.boostedyaml)
 }
 
 group = "uk.firedev"

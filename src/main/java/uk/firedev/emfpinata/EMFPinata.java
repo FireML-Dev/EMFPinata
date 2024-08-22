@@ -4,6 +4,7 @@ import dev.jorel.commandapi.*;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
+import uk.firedev.emfpinata.config.ExampleConfig;
 import uk.firedev.emfpinata.config.MessageConfig;
 import uk.firedev.emfpinata.pinatas.PinataManager;
 
@@ -26,6 +27,9 @@ public final class EMFPinata extends JavaPlugin {
         reload();
         registerCommands();
         metrics();
+
+        // Load the example config
+        new ExampleConfig();
     }
 
     public static EMFPinata getInstance() { return instance; }

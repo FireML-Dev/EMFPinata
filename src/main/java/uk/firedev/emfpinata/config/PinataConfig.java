@@ -1,12 +1,12 @@
 package uk.firedev.emfpinata.config;
 
-import dev.dejvokep.boostedyaml.block.implementation.Section;
 import org.bukkit.entity.*;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
 import uk.firedev.emfpinata.pinatas.Pinata;
 import uk.firedev.emfpinata.pinatas.PinataManager;
 import com.oheers.fish.config.ConfigBase;
+import com.oheers.fish.libs.boostedyaml.block.implementation.Section;
 
 public class PinataConfig extends ConfigBase {
 
