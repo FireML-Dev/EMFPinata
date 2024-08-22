@@ -5,3 +5,7 @@ messages:
   pinata-command:
     not-valid: "{prefix}<red>That piñata does not exist!"
     spawned: "{prefix}<aqua>Successfully spawned a Piñata."
+
+# ATTENTION ATTENTION ATTENTION
+# DO NOT EDIT THIS VALUE OR THINGS WILL BREAK!!!
+config-version: 1
