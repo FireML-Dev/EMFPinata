@@ -7,5 +7,6 @@ pinatas:
     glowing: true
     glow-color: AQUA
     silent: true
+    has-awareness: true
     rewards:
       - "ITEM:STONE,10"
