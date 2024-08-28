@@ -1,11 +1,9 @@
 package uk.firedev.emfpinata.pinatas;
 
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
@@ -54,7 +52,7 @@ public interface PinataType {
         LivingEntity entity = (LivingEntity) location.getWorld().spawnEntity(location, getEntityType());
         if (getDisplayName() != null) {
             entity.setCustomNameVisible(true);
-            entity.customName(MiniMessage.miniMessage().deserialize(getDisplayName()));
+            entity.customName(EMFPinata.getInstance().getMiniMessage().deserialize(getDisplayName()));
         }
         entity.setGlowing(isGlowing());
         if (getGlowColor() != null && !getGlowColor().isEmpty()) {
