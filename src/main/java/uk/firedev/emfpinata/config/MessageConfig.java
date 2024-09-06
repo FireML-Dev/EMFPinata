@@ -10,7 +10,7 @@ public class MessageConfig extends ConfigBase {
 
     private static MessageConfig instance;
 
-    public MessageConfig() {
+    private MessageConfig() {
         super("messages.yml", "messages.yml", EMFPinata.getInstance(), true);
     }
 
