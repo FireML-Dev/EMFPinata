@@ -12,14 +12,12 @@ repositories {
     mavenCentral()
     gradlePluginPortal()
     maven("https://repo.papermc.io/repository/maven-public/")
-    maven("https://repo.firedev.uk/repository/maven-public/") {
-        metadataSources { artifact() }
-    }
+    maven("https://repo.firedev.uk/repository/maven-public/")
 }
 
 dependencies {
     compileOnly(libs.paper.api)
-    compileOnly(libs.evenmorefish)
+    compileOnly(files("$projectDir/libs/even-more-fish-1.7.3-112.jar"))
 
     implementation(libs.commandapi)
     implementation(libs.bstats)
