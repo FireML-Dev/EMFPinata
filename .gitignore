@@ -100,7 +100,6 @@ $RECYCLE.BIN/
 *.lnk
 
 target/
-
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -115,3 +114,8 @@ buildNumber.properties
 
 # Common working directory
 run/
+
+# Allow libs directory jar files
+!libs/*.jar
+# Allow gradle directory jar files
+!gradle/*.jar
