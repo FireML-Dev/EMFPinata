@@ -8,7 +8,7 @@ dependencyResolutionManagement {
             library("commandapi", "dev.jorel:commandapi-bukkit-shade-mojang-mapped:9.5.3")
             library("bstats", "org.bstats:bstats-bukkit:3.0.2")
 
-            plugin("shadow", "com.gradleup.shadow").version("8.3.0")
+            plugin("shadow", "com.gradleup.shadow").version("8.3.1")
             plugin("plugin-yml", "net.minecrell.plugin-yml.paper").version("0.6.0")
         }
     }
