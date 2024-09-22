@@ -2,7 +2,7 @@
 
 A Piñata addon for the EvenMoreFish plugin.
 
-Requires a Paper 1.21 Server and Java 21 to work!
+Requires a Paper 1.21.1 Server and Java 21 to work!
 
 [![CodeFactor](https://www.codefactor.io/repository/github/fireml-dev/emfpinata/badge)](https://www.codefactor.io/repository/github/fireml-dev/emfpinata)
 
