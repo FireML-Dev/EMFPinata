@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper.api)
-    compileOnly(files("$projectDir/libs/even-more-fish-1.7.3-112.jar"))
+    compileOnly(files("$projectDir/libs/even-more-fish-1.7.3-RELEASE.jar"))
 
     implementation(libs.commandapi)
     implementation(libs.bstats)
