@@ -7,6 +7,7 @@ import dev.jorel.commandapi.arguments.ArgumentSuggestions;
 import dev.jorel.commandapi.arguments.StringArgument;
 import uk.firedev.emfpinata.config.MessageConfig;
 
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class PinataCommand extends CommandAPICommand {
@@ -20,8 +21,8 @@ public class PinataCommand extends CommandAPICommand {
         withFullDescription("Spawn Piñatas!");
         withArguments(getPinataArgument());
         executesPlayer((player, arguments) -> {
-            // Can safely ignore the null warning, as the argument is not optional
-            PinataType pinataType = PinataManager.getInstance().getPinataFromIdentifier((String) arguments.get("pinata"));
+            // This should never throw an NPE, as the argument is not optional
+            PinataType pinataType = PinataManager.getInstance().getPinataFromIdentifier((String) Objects.requireNonNull(arguments.get("pinata")));
             if (pinataType == null) {
                 player.sendMessage(MessageConfig.getInstance().getPinataNotValidMessage());
                 return;
