@@ -24,7 +24,7 @@ dependencies {
 }
 
 group = "uk.firedev"
-version = "1.0.4"
+version = "1.0.5-SNAPSHOT"
 description = "A Piñata addon for the EvenMoreFish plugin."
 java.sourceCompatibility = JavaVersion.VERSION_21
 
