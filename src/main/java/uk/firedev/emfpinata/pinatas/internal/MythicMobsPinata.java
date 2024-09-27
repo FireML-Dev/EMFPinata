@@ -5,8 +5,10 @@ import io.lumine.mythic.bukkit.BukkitAdapter;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import uk.firedev.emfpinata.EMFPinata;
 import uk.firedev.emfpinata.pinatas.PinataType;
 
 import java.util.ArrayList;
@@ -22,13 +24,17 @@ public class MythicMobsPinata implements PinataType {
     private List<String> rewards = new ArrayList<>();
     private boolean silent = true;
     private String glowColor = "";
-    private final @NotNull MythicMob mythicMob;
+    private final String mythicName;
     private boolean hasAwareness;
 
     public MythicMobsPinata(@NotNull String identifier, @NotNull String mythicName, @Nullable String displayName) {
         this.identifier = identifier;
         this.displayName = displayName;
-        this.mythicMob = MythicBukkit.inst().getMobManager().getMythicMob(mythicName).orElseThrow();
+        this.mythicName = mythicName;
+    }
+
+    public @Nullable MythicMob getMythicMob() {
+        return MythicBukkit.inst().getMobManager().getMythicMob(mythicName).orElse(null);
     }
 
     @Override
@@ -38,7 +44,14 @@ public class MythicMobsPinata implements PinataType {
 
     @Override
     public void spawn(@NotNull Location location) {
-        Entity entity = mythicMob.spawn(BukkitAdapter.adapt(location), 1).getEntity().getBukkitEntity();
+        MythicMob mythicMob = getMythicMob();
+        Entity entity;
+        if (mythicMob == null) {
+            EMFPinata.getInstance().getLogger().warning(mythicName + " is not a valid MythicMob! Defaulting to LLAMA.");
+            entity = location.getWorld().spawnEntity(location, EntityType.LLAMA);
+        } else {
+            entity = mythicMob.spawn(BukkitAdapter.adapt(location), 1).getEntity().getBukkitEntity();
+        }
         applyCommonValues(entity);
     }
 
