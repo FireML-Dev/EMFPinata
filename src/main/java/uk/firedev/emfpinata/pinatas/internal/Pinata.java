@@ -143,10 +143,9 @@ public class Pinata implements PinataType {
     }
 
     @Override
-    public Entity getEntity(@NotNull Location location) {
+    public void spawn(@NotNull Location location) {
         Entity entity = location.getWorld().spawnEntity(location, getEntityType());
         applyCommonValues(entity);
-        return entity;
     }
 
 }

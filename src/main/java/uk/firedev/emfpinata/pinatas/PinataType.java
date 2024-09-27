@@ -21,8 +21,6 @@ public interface PinataType {
 
     String getIdentifier();
 
-    Entity getEntity(@NotNull Location location);
-
     String getDisplayName();
 
     void setDisplayName(@NotNull String displayName);
@@ -65,34 +63,7 @@ public interface PinataType {
         return PinataManager.getInstance().registerPinata(this);
     }
 
-    default void spawn(@NotNull Location location) {
-        World world = location.getWorld();
-        if (world == null) {
-            EMFPinata.getInstance().getLogger().warning("Invalid world!");
-            return;
-        }
-        LivingEntity entity = (LivingEntity) location.getWorld().spawnEntity(location, getEntityType());
-        if (getDisplayName() != null) {
-            entity.setCustomNameVisible(true);
-            entity.customName(EMFPinata.getInstance().getMiniMessage().deserialize(getDisplayName()));
-        }
-        entity.setGlowing(isGlowing());
-        if (getGlowColor() != null && !getGlowColor().isEmpty()) {
-            ScoreboardHelper.getInstance().addToTeam(entity, getGlowColor());
-        }
-        AttributeInstance attribute = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH);
-        if (attribute != null) {
-            attribute.setBaseValue(getHealth());
-            entity.setHealth(getHealth());
-        }
-        entity.setSilent(isSilent());
-        if (entity instanceof Mob mob) {
-            mob.setAware(isAware());
-        }
-        PersistentDataContainer pdc = entity.getPersistentDataContainer();
-        pdc.set(PinataManager.getInstance().getPinataKey(), PersistentDataType.BOOLEAN, true);
-        pdc.set(PinataManager.getInstance().getPinataRewardsKey(), PersistentDataType.LIST.strings(), getRewards());
-    }
+    void spawn(@NotNull Location location);
 
     default void applyCommonValues(@NotNull Entity entity) {
         if (getDisplayName() != null) {

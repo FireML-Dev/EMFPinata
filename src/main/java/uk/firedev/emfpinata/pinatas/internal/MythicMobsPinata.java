@@ -37,10 +37,9 @@ public class MythicMobsPinata implements PinataType {
     }
 
     @Override
-    public Entity getEntity(@NotNull Location location) {
+    public void spawn(@NotNull Location location) {
         Entity entity = mythicMob.spawn(BukkitAdapter.adapt(location), 1).getEntity().getBukkitEntity();
         applyCommonValues(entity);
-        return entity;
     }
 
     @Override
