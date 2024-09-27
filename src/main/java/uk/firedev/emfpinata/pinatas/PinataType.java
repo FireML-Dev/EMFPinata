@@ -74,7 +74,7 @@ public interface PinataType {
         if (getGlowColor() != null && !getGlowColor().isEmpty()) {
             ScoreboardHelper.getInstance().addToTeam(entity, getGlowColor());
         }
-        if (entity instanceof LivingEntity livingEntity) {
+        if (getHealth() > 0 && entity instanceof LivingEntity livingEntity) {
             AttributeInstance attribute = livingEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH);
             if (attribute != null) {
                 attribute.setBaseValue(getHealth());

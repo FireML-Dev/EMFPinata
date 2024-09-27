@@ -24,7 +24,7 @@ public class Pinata implements PinataType {
 
     private final String identifier;
     private String displayName;
-    private int health = 20;
+    private int health = 0;
     private boolean glowing = false;
     private List<String> rewards = new ArrayList<>();
     private boolean silent = true;
@@ -71,9 +71,6 @@ public class Pinata implements PinataType {
 
     @Override
     public void setHealth(int health) {
-        if (health <= 0) {
-            health = 1;
-        }
         this.health = health;
     }
 
