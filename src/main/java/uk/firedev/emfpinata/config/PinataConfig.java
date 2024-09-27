@@ -44,7 +44,7 @@ public class PinataConfig extends ConfigBase {
                 String mythicMobType = type.replaceFirst("mythicmob:", "");
                 pinataType = new MythicMobsPinata(key, mythicMobType, displayName);
             } else {
-                pinataType = new Pinata(key, pinataSection.getString("entity-type", "llama"), displayName);
+                pinataType = new Pinata(key, type, displayName);
             }
             pinataType.setGlowing(pinataSection.getBoolean("glowing", true));
             pinataType.setHealth(pinataSection.getInt("health", 120));
