@@ -2,10 +2,13 @@ package uk.firedev.emfpinata.config;
 
 import com.oheers.fish.config.ConfigBase;
 import com.oheers.fish.libs.boostedyaml.block.implementation.Section;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
-import uk.firedev.emfpinata.pinatas.Pinata;
+import uk.firedev.emfpinata.pinatas.PinataType;
+import uk.firedev.emfpinata.pinatas.internal.MythicMobsPinata;
+import uk.firedev.emfpinata.pinatas.internal.Pinata;
 import uk.firedev.emfpinata.pinatas.PinataManager;
 
 public class PinataConfig extends ConfigBase {
@@ -28,25 +31,28 @@ public class PinataConfig extends ConfigBase {
         if (section == null) {
             return;
         }
+        boolean mythicMobsEnabled = Bukkit.getPluginManager().isPluginEnabled("MythicMobs");
         section.getRoutesAsStrings(false).forEach(key -> {
             Section pinataSection = section.getSection(key);
             if (pinataSection == null) {
                 return;
             }
-            @NotNull EntityType entityType;
-            try {
-                entityType = EntityType.valueOf(pinataSection.getString("entity-type", "llama").toUpperCase());
-            } catch (IllegalArgumentException ex) {
-                entityType = EntityType.LLAMA;
+            String displayName = pinataSection.getString("display-name");
+            String type = pinataSection.getString("entity-type", "llama");
+            PinataType pinataType;
+            if (mythicMobsEnabled && type.startsWith("mythicmob:")) {
+                String mythicMobType = type.replaceFirst("mythicmob:", "");
+                pinataType = new MythicMobsPinata(key, mythicMobType, displayName);
+            } else {
+                pinataType = new Pinata(key, type, displayName);
             }
-            Pinata pinata = new Pinata(key, entityType, pinataSection.getString("display-name"));
-            pinata.setGlowing(pinataSection.getBoolean("glowing", true));
-            pinata.setHealth(pinataSection.getInt("health", 120));
-            pinata.setSilent(pinataSection.getBoolean("silent", true));
-            pinata.setGlowColor(pinataSection.getString("glow-color", "aqua").toUpperCase());
-            pinata.setRewards(pinataSection.getStringList("rewards"));
-            pinata.setAware(pinataSection.getBoolean("has-awareness"));
-            pinata.register();
+            pinataType.setGlowing(pinataSection.getBoolean("glowing", true));
+            pinataType.setHealth(pinataSection.getInt("health", 120));
+            pinataType.setSilent(pinataSection.getBoolean("silent", true));
+            pinataType.setGlowColor(pinataSection.getString("glow-color", "aqua").toUpperCase());
+            pinataType.setRewards(pinataSection.getStringList("rewards"));
+            pinataType.setAware(pinataSection.getBoolean("has-awareness"));
+            pinataType.register();
         });
     }
 

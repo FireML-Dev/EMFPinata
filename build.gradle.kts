@@ -13,11 +13,13 @@ repositories {
     gradlePluginPortal()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.firedev.uk/repository/maven-public/")
+    maven("https://mvn.lumine.io/repository/maven-public/")
 }
 
 dependencies {
     compileOnly(libs.paper.api)
     compileOnly(files("$projectDir/libs/even-more-fish-1.7.3-RELEASE.jar"))
+    compileOnly(libs.mythicmobs)
 
     implementation(libs.commandapi)
     implementation(libs.bstats)
@@ -40,6 +42,10 @@ paper {
     serverDependencies {
         register("EvenMoreFish") {
             required = true
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+        }
+        register("MythicMobs") {
+            required = false
             load = PaperPluginDescription.RelativeLoadOrder.BEFORE
         }
     }
