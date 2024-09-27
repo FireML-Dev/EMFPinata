@@ -2,6 +2,7 @@ package uk.firedev.emfpinata.config;
 
 import com.oheers.fish.config.ConfigBase;
 import com.oheers.fish.libs.boostedyaml.block.implementation.Section;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
@@ -30,6 +31,7 @@ public class PinataConfig extends ConfigBase {
         if (section == null) {
             return;
         }
+        boolean mythicMobsEnabled = Bukkit.getPluginManager().isPluginEnabled("MythicMobs");
         section.getRoutesAsStrings(false).forEach(key -> {
             Section pinataSection = section.getSection(key);
             if (pinataSection == null) {
@@ -38,7 +40,7 @@ public class PinataConfig extends ConfigBase {
             String displayName = pinataSection.getString("display-name");
             String type = pinataSection.getString("entity-type", "llama");
             PinataType pinataType;
-            if (type.startsWith("mythicmob:")) {
+            if (mythicMobsEnabled && type.startsWith("mythicmob:")) {
                 String mythicMobType = type.replaceFirst("mythicmob:", "");
                 pinataType = new MythicMobsPinata(key, mythicMobType, displayName);
             } else {
