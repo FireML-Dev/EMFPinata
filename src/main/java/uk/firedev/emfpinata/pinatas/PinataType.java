@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
@@ -13,21 +14,30 @@ import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
 import uk.firedev.emfpinata.ScoreboardHelper;
 
+import java.util.Arrays;
 import java.util.List;
 
 public interface PinataType {
 
     String getIdentifier();
 
-    EntityType getEntityType();
+    Entity getEntity(@NotNull Location location);
 
     String getDisplayName();
 
+    void setDisplayName(@NotNull String displayName);
+
     int getHealth();
+
+    void setHealth(int health);
 
     boolean isGlowing();
 
+    void setGlowing(boolean glowing);
+
     boolean isAware();
+
+    void setAware(boolean aware);
 
     /**
      * Hooks into EvenMoreFish's reward system to manage piñata rewards.
@@ -35,9 +45,21 @@ public interface PinataType {
      */
     List<String> getRewards();
 
+    void setRewards(@NotNull List<String> rewards);
+
+    void addReward(@NotNull String reward);
+
+    void addRewards(@NotNull String... rewards);
+
+    void addRewards(@NotNull List<String> rewards);
+
     boolean isSilent();
 
+    void setSilent(boolean silent);
+
     String getGlowColor();
+
+    void setGlowColor(@NotNull String glowColor);
 
     default boolean register() {
         return PinataManager.getInstance().registerPinata(this);
@@ -62,6 +84,31 @@ public interface PinataType {
         if (attribute != null) {
             attribute.setBaseValue(getHealth());
             entity.setHealth(getHealth());
+        }
+        entity.setSilent(isSilent());
+        if (entity instanceof Mob mob) {
+            mob.setAware(isAware());
+        }
+        PersistentDataContainer pdc = entity.getPersistentDataContainer();
+        pdc.set(PinataManager.getInstance().getPinataKey(), PersistentDataType.BOOLEAN, true);
+        pdc.set(PinataManager.getInstance().getPinataRewardsKey(), PersistentDataType.LIST.strings(), getRewards());
+    }
+
+    default void applyCommonValues(@NotNull Entity entity) {
+        if (getDisplayName() != null) {
+            entity.setCustomNameVisible(true);
+            entity.customName(EMFPinata.getInstance().getMiniMessage().deserialize(getDisplayName()));
+        }
+        entity.setGlowing(isGlowing());
+        if (getGlowColor() != null && !getGlowColor().isEmpty()) {
+            ScoreboardHelper.getInstance().addToTeam(entity, getGlowColor());
+        }
+        if (entity instanceof LivingEntity livingEntity) {
+            AttributeInstance attribute = livingEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            if (attribute != null) {
+                attribute.setBaseValue(getHealth());
+                livingEntity.setHealth(getHealth());
+            }
         }
         entity.setSilent(isSilent());
         if (entity instanceof Mob mob) {
