@@ -37,9 +37,11 @@ public class Pinata implements PinataType {
         this.displayName = displayName;
 
         @NotNull EntityType entityType;
+        entityTypeString = entityTypeString.toUpperCase();
         try {
-            entityType = EntityType.valueOf(entityTypeString.toUpperCase());
+            entityType = EntityType.valueOf(entityTypeString);
         } catch (IllegalArgumentException ex) {
+            EMFPinata.getInstance().getLogger().warning(entityTypeString + " is not a valid entity type. Defaulting to LLAMA.");
             entityType = EntityType.LLAMA;
         }
         this.entityType = entityType;
