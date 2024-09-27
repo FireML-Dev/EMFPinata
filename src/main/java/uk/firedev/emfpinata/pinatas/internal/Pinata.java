@@ -29,22 +29,13 @@ public class Pinata implements PinataType {
     private List<String> rewards = new ArrayList<>();
     private boolean silent = true;
     private String glowColor = "";
-    private final EntityType entityType;
+    private final String entityTypeString;
     private boolean hasAwareness;
 
     public Pinata(@NotNull String identifier, @NotNull String entityTypeString, @Nullable String displayName) {
         this.identifier = identifier;
         this.displayName = displayName;
-
-        @NotNull EntityType entityType;
-        entityTypeString = entityTypeString.toUpperCase();
-        try {
-            entityType = EntityType.valueOf(entityTypeString);
-        } catch (IllegalArgumentException ex) {
-            EMFPinata.getInstance().getLogger().warning(entityTypeString + " is not a valid entity type. Defaulting to LLAMA.");
-            entityType = EntityType.LLAMA;
-        }
-        this.entityType = entityType;
+        this.entityTypeString = entityTypeString.toUpperCase();
     }
 
     @Override
@@ -53,6 +44,13 @@ public class Pinata implements PinataType {
     }
 
     public EntityType getEntityType() {
+        @NotNull EntityType entityType;
+        try {
+            entityType = EntityType.valueOf(entityTypeString);
+        } catch (IllegalArgumentException ex) {
+            EMFPinata.getInstance().getLogger().warning(entityTypeString + " is not a valid entity type. Defaulting to LLAMA.");
+            entityType = EntityType.LLAMA;
+        }
         return entityType;
     }
 
