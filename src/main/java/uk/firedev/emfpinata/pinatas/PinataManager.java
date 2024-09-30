@@ -50,7 +50,10 @@ public class PinataManager {
      * @param identifier The piñata identifier
      * @return The PinataType, or null if it doesn't exist.
      */
-    public @Nullable PinataType getPinataFromIdentifier(@NotNull String identifier) {
+    public @Nullable PinataType getPinataFromIdentifier(@Nullable String identifier) {
+        if (identifier == null) {
+            return null;
+        }
         if (pinatasSize == -1 || pinatasSize != getEditablePinataList().size()) {
             pinatasSize = getEditablePinataList().size();
             Map<String, PinataType> map = new HashMap<>();
@@ -151,10 +154,6 @@ public class PinataManager {
         pinatas.clear();
     }
 
-    public NamespacedKey getPinataRewardsKey() {
-        return new NamespacedKey(EMFPinata.getInstance(), "pinata-rewards");
-    }
-
     public NamespacedKey getPinataKey() {
         return new NamespacedKey(EMFPinata.getInstance(), "pinata");
     }
@@ -167,7 +166,16 @@ public class PinataManager {
         if (!isPinata(entity)) {
             return List.of();
         }
-        return entity.getPersistentDataContainer().getOrDefault(getPinataRewardsKey(), PersistentDataType.LIST.strings(), List.of());
+        PinataType type = getPinataFromEntity(entity);
+        if (type == null) {
+            return List.of();
+        }
+        return type.getRewards();
+    }
+
+    public @Nullable PinataType getPinataFromEntity(@NotNull Entity entity) {
+        String identifier = entity.getPersistentDataContainer().get(getPinataKey(), PersistentDataType.STRING);
+        return getPinataFromIdentifier(identifier);
     }
 
 }

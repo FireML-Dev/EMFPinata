@@ -1,11 +1,9 @@
 package uk.firedev.emfpinata.pinatas;
 
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -14,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
 import uk.firedev.emfpinata.ScoreboardHelper;
 
-import java.util.Arrays;
 import java.util.List;
 
 public interface PinataType {
@@ -86,8 +83,7 @@ public interface PinataType {
             mob.setAware(isAware());
         }
         PersistentDataContainer pdc = entity.getPersistentDataContainer();
-        pdc.set(PinataManager.getInstance().getPinataKey(), PersistentDataType.BOOLEAN, true);
-        pdc.set(PinataManager.getInstance().getPinataRewardsKey(), PersistentDataType.LIST.strings(), getRewards());
+        pdc.set(PinataManager.getInstance().getPinataKey(), PersistentDataType.STRING, getIdentifier());
     }
 
 }

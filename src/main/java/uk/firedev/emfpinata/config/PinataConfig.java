@@ -3,13 +3,11 @@ package uk.firedev.emfpinata.config;
 import com.oheers.fish.config.ConfigBase;
 import com.oheers.fish.libs.boostedyaml.block.implementation.Section;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.EntityType;
-import org.jetbrains.annotations.NotNull;
 import uk.firedev.emfpinata.EMFPinata;
+import uk.firedev.emfpinata.pinatas.PinataManager;
 import uk.firedev.emfpinata.pinatas.PinataType;
 import uk.firedev.emfpinata.pinatas.internal.MythicMobsPinata;
 import uk.firedev.emfpinata.pinatas.internal.Pinata;
-import uk.firedev.emfpinata.pinatas.PinataManager;
 
 public class PinataConfig extends ConfigBase {
 

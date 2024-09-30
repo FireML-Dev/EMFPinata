@@ -1,19 +1,11 @@
 package uk.firedev.emfpinata.pinatas.internal;
 
 import org.bukkit.Location;
-import org.bukkit.attribute.Attribute;
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Mob;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import uk.firedev.emfpinata.EMFPinata;
-import uk.firedev.emfpinata.ScoreboardHelper;
-import uk.firedev.emfpinata.pinatas.PinataManager;
 import uk.firedev.emfpinata.pinatas.PinataType;
 
 import java.util.ArrayList;
