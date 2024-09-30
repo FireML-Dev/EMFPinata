@@ -34,7 +34,7 @@ bukkit {
     name = project.name
     version = project.version.toString()
     main = "uk.firedev.emfpinata.EMFPinata"
-    apiVersion = "1.21"
+    apiVersion = "1.18"
     author = "FireML"
     description = project.description.toString()
     foliaSupported = true
