@@ -30,7 +30,7 @@ version = "1.0.6-SNAPSHOT"
 description = "A Piñata addon for the EvenMoreFish plugin."
 java.sourceCompatibility = JavaVersion.VERSION_21
 
-paper {
+bukkit {
     name = project.name
     version = project.version.toString()
     main = "uk.firedev.emfpinata.EMFPinata"
@@ -39,16 +39,13 @@ paper {
     description = project.description.toString()
     foliaSupported = true
 
-    serverDependencies {
-        register("EvenMoreFish") {
-            required = true
-            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
-        }
-        register("MythicMobs") {
-            required = false
-            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
-        }
-    }
+    depend = listOf(
+        "EvenMoreFish"
+    )
+
+    softDepend = listOf(
+        "MythicMobs"
+    )
 }
 
 publishing {
