@@ -28,7 +28,7 @@ dependencies {
 group = "uk.firedev"
 version = "1.0.6-SNAPSHOT"
 description = "A Piñata addon for the EvenMoreFish plugin."
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 bukkit {
     name = project.name
