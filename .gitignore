@@ -118,4 +118,4 @@ run/
 # Allow libs directory jar files
 !libs/*.jar
 # Allow gradle directory jar files
-!gradle/*.jar
+!gradle/*
